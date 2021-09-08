@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">CompraVenta</string>
+    <string name="lbl_titulo">Título</string>
+    <string name="hint_titulo">Título…</string>
+    <string name="lbl_descripcion">Descripción</string>
+    <string name="hint_descripcion">Descripción del producto…</string>
+    <string name="lbl_correo">Correo de contacto</string>
+    <string name="hint_correo">Correo electrónico…</string>
+    <string name="lbl_precio">Precio</string>
+    <string name="hint_precio">Precio del producto…</string>
+    <string name="lbl_categoria">Categoría</string>
+    <string-array name="sp_categoria">
+        <item>INDUMENTARIA</item>
+        <item>ELECTRONICA</item>
+        <item>ENTRETENIMIENTO</item>
+        <item>JARDIN</item>
+        <item>VEHICULOS</item>
+        <item>JUGUETES</item>
+    </string-array>
+    <string name="lbl_descuento">Ofrecer descuento de envío</string>
+    <string name="lbl_retiro">Retiro en persona</string>
+    <string name="lbl_direccion">Dirección de retiro</string>
+    <string name="hint_direccion">Dirección de retiro…</string>
+    <string name="lbl_terminos">Aceptar los términos y condiciones</string>
+    <string name="lbl_publicar">Publicar</string>
+    <string name="lbl_min_descuento">0%</string>
+    <string name="lbl_max_descuento">100%</string>
+
 </resources>
