@@ -9,6 +9,8 @@
     <string name="lbl_precio">Precio</string>
     <string name="hint_precio">Precio del producto…</string>
     <string name="lbl_categoria">Categoría</string>
+    <string name="lbl_but_categoria">Seleccionar categoría</string>
+    <string name="hint_categoria">Una categoría...</string>
     <string-array name="sp_categoria">
         <item>INDUMENTARIA</item>
         <item>ELECTRONICA</item>

@@ -17,12 +17,15 @@ public class CategoriaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccionar_categoria);
 
+
+
+
         lista_recycler = findViewById(R.id.lista_recycler);
         lista_recycler.setHasFixedSize(true);
         layout_manager = new LinearLayoutManager(this);
         lista_recycler.setLayoutManager(layout_manager);
 
-        adapter = new CatRecyclerAdapter(Categoria.leerCategoria(getApplicationContext()));
+        adapter = new CatRecyclerAdapter(Categoria.leerCategoria(getApplicationContext()),this);
         lista_recycler.setAdapter(adapter);
 
     }

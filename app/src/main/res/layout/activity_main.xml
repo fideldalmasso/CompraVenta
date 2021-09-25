@@ -78,11 +78,36 @@
             android:layout_height="wrap_content"
             android:text="@string/lbl_categoria" />
 
-        <Spinner
-            android:id="@+id/sp_categoria"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/sp_categoria" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nombre_categoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/hint_categoria"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/selector_categoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/lbl_but_categoria" />
+
+            <Spinner
+                android:id="@+id/sp_categoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/sp_categoria"
+                android:visibility="gone" />
+
+        </LinearLayout>
 
         <Switch
             android:id="@+id/sw_descuento"

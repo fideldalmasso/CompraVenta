@@ -1,5 +1,7 @@
 package com.example.compraventa;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -16,10 +18,11 @@ import java.util.List;
 
 public class CatRecyclerAdapter extends RecyclerView.Adapter<CatRecyclerAdapter.ViewHolder> {
 
-    private List<Categoria> dataset_categorias;
-
-    public CatRecyclerAdapter(List<Categoria> dataset_categorias) {
+    private static List<Categoria> dataset_categorias;
+    private static CategoriaActivity activity;
+    public CatRecyclerAdapter(List<Categoria> dataset_categorias, CategoriaActivity act) {
         this.dataset_categorias = dataset_categorias;
+        this.activity = act;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -31,6 +34,19 @@ public class CatRecyclerAdapter extends RecyclerView.Adapter<CatRecyclerAdapter.
             imagen_cat = itemView.findViewById(R.id.imagen_cat);
             nombre_cat = itemView.findViewById(R.id.nombre_cat);
             card_cat = itemView.findViewById(R.id.card);
+            this.itemView.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(activity,MainActivity.class);
+                    Integer posicion = getAdapterPosition();
+                    i.putExtra("NOMBRE",nombre_cat.getText());
+                    i.putExtra("COLOR",dataset_categorias.get(posicion).getColor());
+                    activity.setResult(Activity.RESULT_OK,i);
+                    activity.finish();
+
+                }
+            });
         }
 
         public ImageView getImagen_cat() {

@@ -1,9 +1,14 @@
 package com.example.compraventa;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -35,8 +40,23 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout componentePorcentaje;
     TextView lbl_direccion;
     TextView lbl_porcentaje_descuento;
+    Button selector_categoria;
+    TextView nombre_categoria;
+    Integer categoria_seleccionada;
     private static Pattern patron;
     private static Pattern patron_correo;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode==1001){
+            if(resultCode== Activity.RESULT_OK) {
+                nombre_categoria.setText(data.getExtras().getString("NOMBRE"));
+                nombre_categoria.setBackgroundColor(Color.parseColor(data.getExtras().getString("COLOR")));
+            }
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +80,18 @@ public class MainActivity extends AppCompatActivity {
         bu_publicar = findViewById(R.id.bu_publicar);
         componentePorcentaje = findViewById(R.id.componentePorcentaje);
         lbl_porcentaje_descuento = findViewById(R.id.porcentaje_descuento);
+        categoria_seleccionada=-1;
+        selector_categoria = findViewById(R.id.selector_categoria);
+        nombre_categoria = findViewById(R.id.nombre_categoria);
+
+        selector_categoria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this,CategoriaActivity.class);
+                i.putExtra("SELECCION",categoria_seleccionada);
+                startActivityForResult(i,1001);
+            }
+        });
 
         sw_descuento.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -162,6 +194,11 @@ public class MainActivity extends AppCompatActivity {
                mensajes.add("El precio debe ser mayor a $0.");
            }
        }
+        if(TextUtils.isEmpty(nombre_categoria.getText())) {
+            mensajes.add("Debe seleccionar una categoría.");
+        }
+
+
        if(cb_retiro.isChecked()) {
            if(TextUtils.isEmpty(et_direccion.getText())) {
                mensajes.add("El campo dirección de retiro es obligatorio.");
